@@ -24,3 +24,27 @@ Employ design thinking within an agile development process to create a full-feat
 * Manage posts: As a Site Admin I can create, read, update and delete posts so that I can manage my blog content
 * Create drafts: As a Site Admin I can create draft posts so that I can finish writing the content later
 * Approve comments: As a Site Admin I can approve or disapprove comments so that I can filter out objectionable comments
+
+## DATABASE MODELS:
+
+Django is a MVT or Model, View, Template framework:
+
+The model is our database and structure, 
+The templates are the HTML pages that our user sees,
+The views are the glue that holds the two of them together 
+The logic in our code that reads from (or updates) the model and then updates what the user sees.
+
+Blog variables:
+
+* title
+* author  
+* updated date
+* main content 
+* number of likes
+* number of comments
+
+What kinds of fields are these?  
+
+[Relationship Diagram](https://docs.google.com/spreadsheets/d/1Bq74KutSfTbplOzb7bEvSfRpMtyyOreDQ4OC_nWXpQI/edit?usp=sharing)
+
+![Relationship Diagram](media/images/relationship-diagram-blog.png)
