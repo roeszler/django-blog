@@ -68,7 +68,7 @@ class PostDetail(View):
             left and we want to process it.
             """
             comment_form.instance.email = request.user.email  # set our email and our username automatically from the logged in user
-            comment_form.instance.name = request.user.name
+            comment_form.instance.username = request.user.username
             comment = comment_form.save(commit=False)  # not committing it just yet, as we need to first assign a post to it.
             comment.post = post  # assign the post to the comment
             comment.save()  # now save the post with comment attached
