@@ -47,7 +47,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     """
-    The model to define the content within the 
+    The model to define the content within the
     Comments 'table' to be read and updated
     """
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
@@ -59,7 +59,7 @@ class Comment(models.Model):
 
     class Meta:
         """
-        To order comments in a ascending format 
+        To order comments in a ascending format
         """
         ordering = ['created_on']
     

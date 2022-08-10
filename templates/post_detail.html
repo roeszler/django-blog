@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
+<!-- To load the forms  -->
+{% load crispy_forms_tags %}
+
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -75,7 +78,41 @@
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
+                <!-- For use with Crispy forms -->
+
+                <!-- to include the boolean test from class in views.py. If true, ie is commented -->
+                {% if commented %}
+                <!-- instead of comments form display this message -->
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting approval
+                </div>
+                <!-- if no comment has been entered, display the comments form below   -->
+                {% else %} 
+                
+                <!-- so comment box only appears if our user is authenticated -->
+                {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+
+                <!-- post method to create something on the server -->
+                <form method="post" style="margin-top: 1.3em;">
+
+                    <!-- render form using a crispy filter as format -->
+                    {{ comment_form | crispy }}
+
+                    <!-- 
+                        Add Cross-Site Request Forgery. A way that attackers could try to find  vulnerabilities in your site. 
+                        Django comes with a protection against that, which is the CSRF token.
+                        Add this to all any form you create 
+                    -->
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+
+                {% endif %}
+                {% endif %}
+
             </div>
         </div>
     </div>
