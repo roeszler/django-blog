@@ -15,12 +15,15 @@
                             <div class="image-container">
                                 <!-- if 'placeholder' is found in the url (ie the default), place this image -->
                                 {% if 'placeholder' in post.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="../static/images/default-laptop-typing.jpeg"
-                                    alt="default post image of typing on laptop">
+                                <a href="{% url 'post_detail' post.slug %}">
+                                    <img class="card-img-top" src="../static/images/default-laptop-typing.jpeg"
+                                        alt="default post image of typing on laptop">
+                                </a>
                                 {% else %}
-                                <img class="card-img-top" src="{{ post.featured_image.url }}"
-                                    alt="featured image included with post">
+                                <a href="{% url 'post_detail' post.slug %}">
+                                    <img class="card-img-top" src="{{ post.featured_image.url }}"
+                                        alt="featured image included with post">
+                                </a>
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
@@ -33,7 +36,7 @@
                             </a>
                             <hr>
                             <p class="card-text text-muted h6">{{ post.created_on }}
-                                <i class="far fa-heart"></i>{{ post.number_of_likes }}
+                                <i class="far fa-heart"></i> {{ post.number_of_likes }}
                             </p>
                         </div>
                     </div>
