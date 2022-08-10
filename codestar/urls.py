@@ -21,4 +21,5 @@ urlpatterns = [
     # Will register our Summernote urls here with our urls.py file
     path('summernote/', include('django_summernote.urls')),
     path('', include('blog.urls'), name='blog_urls'),  # to import the blog > urls.py urls. Blank indicated default
+    path('accounts/', include('allauth.urls')),
 ]
