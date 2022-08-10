@@ -8,7 +8,40 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-
+                {% for post in post_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <!-- if 'placeholder' is found in the url (ie the default), place this image -->
+                                {% if 'placeholder' in post.featured_image.url %}
+                                <img class="card-img-top"
+                                    src="media/images/default-laptop-typing.jpeg"
+                                    alt="default post image of typing on laptop">
+                                {% else %}
+                                <img class="card-img-top" src="{{ post.featured_image.url }}"
+                                    alt="featured image included with post">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ post.author }}</p>
+                                </div>
+                            </div>
+                            <a href="#" class="post-link">
+                                <h2 class="card-title">{{ post.title }}</h2>
+                                <p class="card-text">{{ post.excerpt }}</p>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                <!-- 
+                    built in 'counter' method on the for loop. When easily divisible by 3, will close our class and start a new one at the very end of the loop 
+                -->
+                {% endfor %}
             </div>
         </div>
     </div>
