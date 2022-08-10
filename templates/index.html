@@ -16,7 +16,7 @@
                                 <!-- if 'placeholder' is found in the url (ie the default), place this image -->
                                 {% if 'placeholder' in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="media/images/default-laptop-typing.jpeg"
+                                    src="../static/images/default-laptop-typing.jpeg"
                                     alt="default post image of typing on laptop">
                                 {% else %}
                                 <img class="card-img-top" src="{{ post.featured_image.url }}"
