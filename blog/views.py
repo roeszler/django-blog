@@ -6,7 +6,7 @@ from .forms import CommentForm
 
 class PostList(generic.ListView):
     """
-    Built-in class-based generic view from Django to 
+    Built-in class-based generic view from Django to
     quickly render the list view of the blog posts
     """
     model = Post  # use post as the classes model
@@ -15,13 +15,13 @@ class PostList(generic.ListView):
     paginate_by = 6  # separate and limit to display 6 posts, or add page navigation
 
 
-# Class-based views are different. Instead of using an if statement to check the request method,  
+# Class-based views are different. Instead of using an if statement to check the request method,
 # we simply create class methods called get or post, or any other HTTP verb.
 class PostDetail(View):
     """
     Creates and Retrieves the detail view of a particular blog post
     """
-    
+
     def get(self, request, slug, *args, **kwargs):  # define the function and inputs
         """
         Retrieves information for display in each blog post
@@ -32,7 +32,7 @@ class PostDetail(View):
         liked = False  # default liked status
         if post.likes.filter(id=self.request.user.id).exists(): # to see if the logged in user has liked this post or not
             liked = True
-        
+
         # Now to send all of this above information to our render method:
         return render(
             request,  # send request
@@ -48,7 +48,7 @@ class PostDetail(View):
                 'comment_form': CommentForm()
             },
         )
-    
+
     def post(self, request, slug, *args, **kwargs):
         """
         Creates information in each blog post
@@ -59,13 +59,13 @@ class PostDetail(View):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         comment_form = CommentForm(data=request.POST)  # this will get all of the data that we posted from our form.
-        
+
         # The form has a method called 'is_valid' that returns a Boolean value
         # regarding whether the form is valid. If it is valid, a comment has been
         # left and we want to process it.
-        
+
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email  # set our email and our username automatically from the logged in user
             comment_form.instance.username = request.user.username
@@ -74,7 +74,7 @@ class PostDetail(View):
             comment.save()  # now save the post with comment attached
         else:  # if the form is not valid then we just want to return an empty comment form instance
             comment_form = CommentForm()
-        
+
         # Now to send all of this above information to our render method:
         return render(
             request,  # send request
