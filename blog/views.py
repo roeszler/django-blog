@@ -21,7 +21,7 @@ class PostDetail(View):
     """
     Creates and Retrieves the detail view of a particular blog post
     """
-
+    
     def get(self, request, slug, *args, **kwargs):  # define the function and inputs
         """
         Retrieves information for display in each blog post
@@ -45,7 +45,7 @@ class PostDetail(View):
                 'liked': liked,
 
                 # to render the form as part of our view:
-                'comment_form' : CommentForm()
+                'comment_form': CommentForm()
             },
         )
     
