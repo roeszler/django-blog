@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env
 
@@ -59,6 +60,15 @@ SITE_ID = 1
 # add in the redirection  urls too so that after we've logged in/out the site will redirect us to the home page:
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# We want to assign these tags to different Bootstrap classes so that the color of our message will change according to its category
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 # tell Crispy to use  Bootstrap classes for formatting:
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

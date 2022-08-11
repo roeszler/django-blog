@@ -57,9 +57,22 @@
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    <!-- use the safe filter to ensure that HTML or scripts provided are rendered safe before they're actually viewed by the user. -->
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <main class="flex-shrink-0 main-bg">
         {% block content %}
-        <!-- Content Goes here -->
+        <!-- Message content Goes here -->
         {% endblock content %}
     </main>
 
@@ -71,6 +84,16 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
+
+    <!-- Script to remove alert window after three seconds -->
+    <script>
+        setTimeout(function() {
+            let messages = document.getElementById('msg');
+            let alert = new bootstrap.Alert(messages);
+            alert.close(); // alert.close is part of bootstrap documentation
+        }, 3000);
+    </script>
+    
 </body>
 
 </html>
