@@ -16,7 +16,7 @@
                                 <!-- if 'placeholder' is found in the url (ie the default), place this image -->
                                 {% if 'placeholder' in post.featured_image.url %}
                                 <a href="{% url 'post_detail' post.slug %}">
-                                    <img class="card-img-top" src="../static/images/default-laptop-typing.jpeg"
+                                    <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"
                                         alt="default post image of typing on laptop">
                                 </a>
                                 {% else %}
