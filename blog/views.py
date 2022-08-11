@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse  # allows us to look up a URL by the name that we give it in our urls.py file.
 from django.views import generic, View
+from django.http import HttpResponseRedirect  # reload our post_detail template so that we can see the results.
 from .models import Post
 from .forms import CommentForm
 
@@ -90,3 +91,23 @@ class PostDetail(View):
                 'comment_form' : CommentForm()
             },
         )
+
+
+class PostLike(View):
+    """
+    Class based view that inherits from View
+    Posts data and accepts three parameters self, request, slug
+    """
+    def post(self, request, slug, *args, **kwargs):  # define the function and inputs
+        """
+        Creates a toggle of the 'like' notification on each blog post
+        """
+        post = get_object_or_404(Post, slug=slug)  # get object or alternately 404
+        if post.likes.filter(id=self.request.user.id).exists(): # to see if the logged in user has liked this post or not
+            post.likes.remove(request.user)  # if has been liked, remove it
+        else:
+            post.likes.add(request.user)  # If it hasn't already been liked, then we add the like
+
+        # reload our post_detail page so that we can see the results
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))  # the arguments will be the slugs, so that we know which post to load. So when we like or unlike a post it will reload our page
+

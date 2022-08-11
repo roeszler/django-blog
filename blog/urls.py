@@ -13,4 +13,5 @@ urlpatterns = [
     # function within the PostDetail class within views.py file. 
     # Creating friendly URLs that consist of our Heroku project URL followed by the slug
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
+    path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
 ]
