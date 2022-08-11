@@ -61,13 +61,12 @@ class PostDetail(View):
             liked = True
         
         comment_form = CommentForm(data=request.POST)  # this will get all of the data that we posted from our form.
-
+        
+        # The form has a method called 'is_valid' that returns a Boolean value
+        # regarding whether the form is valid. If it is valid, a comment has been
+        # left and we want to process it.
+        
         if comment_form.is_valid():
-            """
-            The form has a method called 'is_valid' that returns a Boolean value
-            regarding whether the form is valid. If it is valid, a comment has been
-            left and we want to process it.
-            """
             comment_form.instance.email = request.user.email  # set our email and our username automatically from the logged in user
             comment_form.instance.username = request.user.username
             comment = comment_form.save(commit=False)  # not committing it just yet, as we need to first assign a post to it.
@@ -88,7 +87,7 @@ class PostDetail(View):
                 'liked': liked,
 
                 # to render the form as part of our view:
-                'comment_form' : CommentForm()
+                'comment_form': comment_form
             },
         )
 

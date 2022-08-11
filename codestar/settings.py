@@ -29,7 +29,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
+
+# if we didn't set this, then our summer note editor would no  longer work when we deploy the project.
+# Cross-Origin Resource Sharing or CORS tells the browser what resources are permitted to be loaded.
+# Without this setting, our browser wouldn't be able to load the Summernote editor, which would render our blog a little useless.
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ['codestar2022-sr.herokuapp.com', 'localhost']
 
