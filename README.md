@@ -47,4 +47,13 @@ What kinds of fields are these?
 
 [Relationship Diagram](https://docs.google.com/spreadsheets/d/1Bq74KutSfTbplOzb7bEvSfRpMtyyOreDQ4OC_nWXpQI/edit?usp=sharing)
 
-![Relationship Diagram](media/images/relationship-diagram-blog.png)
+![Relationship Diagram](/static/images/relationship-diagram-blog.png)
+
+## Future updates
+1. Expand the messaging system as mentioned in our previous video
+	- Have error messages displaying when a user submits an empty comment form,
+	- Success messages.
+2. Social apps feature of AllAuth to add single sign-on functionality using Google, Facebook, or another authentication provider.
+3. Build a number_of_comments method so that the number of comments can be shown on the front page as well as the number of likes.
+4. Combine your knowledge of the JavaScript fetch API with your Django 
+	- Change the like functionality so that it calls the like URL in the background and doesn't reload the page
