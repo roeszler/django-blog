@@ -19,6 +19,8 @@ if os.path.isfile('env.py'):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# To tell Django  where our templates will be stored.
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
@@ -160,12 +162,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# Setting the media url and file storage paths
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 STATIC_URL = '/static/'
+# Now need to tell Django to use Cloudinary to store our media and static files
+# coming from the library that we installed above, and put into our installed apps section.
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+# To set our static files directories, connect BASE_DIR to the static directory
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+# To set static route
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
