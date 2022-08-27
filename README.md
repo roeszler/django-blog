@@ -1,4 +1,4 @@
-# I think therefore I Blog:
+# I think therefore I Blog: Codestar
 
 ## Purpose: 
 Employ design thinking within an agile development process to create a full-featured blog via a database-backed Django application.
